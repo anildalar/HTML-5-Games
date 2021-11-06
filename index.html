@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            canvas{ /* CSS Element Selector */
+                border: 5px solid red;
+                margin: 50px auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <script>
+            //1. Create a game  object
+
+            var myGameObject = {
+                /* P:V */
+                canvas: document.createElement('canvas'),
+                "name":"Anil",
+                /*Method*/
+                start:function(){//Dont use Fat Arrow
+                    console.log('hello from start method');
+                    console.log(this.name);
+                    //this.canvas.width = 600;
+                    //this.canvas.height = 600;
+                    this.canvas = this.setMyAttribute(this.canvas,{ width:700,height:600 });//Actual Arg
+                    this.context = this.canvas.getContext("2d");
+                    console.log(this.canvas);
+
+                    console.log(document.scripts[0]);
+
+                   document.body.insertBefore(this.canvas,document.scripts[0]);
+
+                },
+
+                setMyAttribute:function(element,object){ // Formal Arg
+                    for (var key in object) {
+                        element.setAttribute(key,object[key])
+                       /*  if (Object.hasOwnProperty.call(object, key)) {
+                            const element = object[key];
+                            
+                        } */
+                    }
+                    return element;
+                }
+            };
+
+
+            
+            console.log(myGameObject);
+
+            /* object.property */ 
+            console.log(myGameObject.canvas);
+
+            /* object.method() */
+
+            //Start the game
+            myGameObject.start()
+
+
+        </script>
+        <script>
+
+        </script>
+    </body>
+</html>
